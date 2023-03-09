@@ -43,6 +43,7 @@ import {
  */
 import { Sidebar } from '../sidebar';
 import { Tabs } from '../tabs';
+import { parseProductToBlocks } from '../../utils/parse-product-to-blocks';
 
 type BlockEditorProps = {
 	product: Partial< Product >;
@@ -63,6 +64,10 @@ export function BlockEditor( {
 		const { canUser } = select( 'core' );
 		return canUser( 'create', 'media', '' ) !== false;
 	}, [] );
+
+	useEffect( () => {
+		updateBlocks( parseProductToBlocks( product ) );
+	}, [ product ] );
 
 	const settings = useMemo( () => {
 		if ( ! canUserCreateMedia ) {
