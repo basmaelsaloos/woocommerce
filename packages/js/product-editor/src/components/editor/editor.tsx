@@ -1,6 +1,7 @@
 /**
  * External dependencies
  */
+import { __ } from '@wordpress/i18n';
 import { createElement, StrictMode } from '@wordpress/element';
 import {
 	EditorSettings,
@@ -47,7 +48,15 @@ export function Editor( { product, settings }: EditorProps ) {
 					<FullscreenMode isActive={ false } />
 					<SlotFillProvider>
 						<InterfaceSkeleton
-							header={ <Header title={ product.name } /> }
+							header={
+								<Header
+									product={ product }
+									title={
+										product.name ||
+										__( 'Add new product', 'woocommerce' )
+									}
+								/>
+							}
 							sidebar={ <Sidebar /> }
 							content={
 								<BlockEditor
