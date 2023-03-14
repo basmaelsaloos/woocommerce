@@ -1,7 +1,6 @@
 /**
  * External dependencies
  */
-import { __ } from '@wordpress/i18n';
 import { createElement, StrictMode } from '@wordpress/element';
 import {
 	EditorSettings,
@@ -13,7 +12,6 @@ import { Product } from '@woocommerce/data';
 // @ts-ignore No types for this exist yet.
 // eslint-disable-next-line @woocommerce/dependency-group
 import { EntityProvider } from '@wordpress/core-data';
-
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore No types for this exist yet.
 // eslint-disable-next-line @woocommerce/dependency-group
@@ -32,9 +30,11 @@ import { BlockEditor } from '../block-editor';
 import { initBlocks } from './init-blocks';
 
 initBlocks();
+
 export type ProductEditorSettings = Partial<
 	EditorSettings & EditorBlockListSettings
 >;
+
 type EditorProps = {
 	product: Product;
 	settings: ProductEditorSettings | undefined;
@@ -50,11 +50,8 @@ export function Editor( { product, settings }: EditorProps ) {
 						<InterfaceSkeleton
 							header={
 								<Header
-									product={ product }
-									title={
-										product.name ||
-										__( 'Add new product', 'woocommerce' )
-									}
+									productId={ product.id }
+									title={ product.name }
 								/>
 							}
 							sidebar={ <Sidebar /> }

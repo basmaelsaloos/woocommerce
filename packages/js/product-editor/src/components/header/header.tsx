@@ -5,14 +5,15 @@ import { Button } from '@wordpress/components';
 import { useDispatch, useSelect } from '@wordpress/data';
 import { createElement } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
-import { Product } from '@woocommerce/data';
 
 export type HeaderProps = {
-	product: Product;
+	productId: number;
 	title: string;
 };
 
-export function Header( { product, title }: HeaderProps ) {
+const DEFAULT_PRODUCT_NAME = 'AUTO-DRAFT';
+
+export function Header( { productId, title }: HeaderProps ) {
 	const { isProductLocked, isSaving } = useSelect(
 		( select ) => {
 			const { isSavingEntityRecord } = select( 'core' );
@@ -22,11 +23,11 @@ export function Header( { product, title }: HeaderProps ) {
 				isSaving: isSavingEntityRecord(
 					'postType',
 					'product',
-					product.id
+					productId
 				),
 			};
 		},
-		[ product.id ]
+		[ productId ]
 	);
 
 	const isDisabled = isProductLocked || isSaving;
@@ -34,7 +35,7 @@ export function Header( { product, title }: HeaderProps ) {
 	const { saveEditedEntityRecord } = useDispatch( 'core' );
 
 	function handleSave() {
-		saveEditedEntityRecord( 'postType', 'product', product.id );
+		saveEditedEntityRecord( 'postType', 'product', productId );
 	}
 
 	return (
@@ -44,7 +45,11 @@ export function Header( { product, title }: HeaderProps ) {
 			aria-label={ __( 'Product Editor top bar.', 'woocommerce' ) }
 			tabIndex={ -1 }
 		>
-			<h1 className="woocommerce-product-header__title">{ title }</h1>
+			<h1 className="woocommerce-product-header__title">
+				{ title === DEFAULT_PRODUCT_NAME
+					? __( 'Add new product', 'woocommerce' )
+					: title }
+			</h1>
 
 			<div className="woocommerce-product-header__actions">
 				<Button
