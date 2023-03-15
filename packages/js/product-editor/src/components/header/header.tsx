@@ -6,6 +6,11 @@ import { useDispatch, useSelect } from '@wordpress/data';
 import { createElement } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
 
+/**
+ * Internal dependencies
+ */
+import { MoreMenu } from './more-menu';
+
 export type HeaderProps = {
 	productId: number;
 	title: string;
@@ -60,6 +65,7 @@ export function Header( { productId, title }: HeaderProps ) {
 				>
 					{ __( 'Save', 'woocommerce' ) }
 				</Button>
+				<MoreMenu />
 			</div>
 		</div>
 	);
