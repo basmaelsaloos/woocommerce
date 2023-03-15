@@ -152,13 +152,21 @@ class DefaultPaymentGateways {
 				'category_additional' => array(),
 			),
 			array(
-				'id'                  => 'ppcp-gateway',
-				'title'               => __( 'PayPal Payments', 'woocommerce' ),
-				'content'             => __( "Safe and secure payments using credit cards or your customer's PayPal account.", 'woocommerce' ),
-				'image'               => WC_ADMIN_IMAGES_FOLDER_URL . '/paypal.png',
-				'image_72x72'         => WC_ADMIN_IMAGES_FOLDER_URL . '/payment_methods/72x72/paypal.png',
-				'plugins'             => array( 'woocommerce-paypal-payments' ),
-				'is_visible'          => array(
+				'id'                     => 'ppcp-gateway',
+				'title'                  => __( 'PayPal Payments', 'woocommerce' ),
+				'content'                => __( "Safe and secure payments using credit cards or your customer's PayPal account.", 'woocommerce' ),
+				'transaction_processors' => array(
+					'cartesbancaires' => WC_ADMIN_IMAGES_FOLDER_URL . '/payment_methods/transaction_processors/cartesbancaires.svg',
+					'bancontact'      => WC_ADMIN_IMAGES_FOLDER_URL . '/payment_methods/transaction_processors/bancontact.svg',
+					'eps'             => WC_ADMIN_IMAGES_FOLDER_URL . '/payment_methods/transaction_processors/eps.svg',
+					'giropay'         => WC_ADMIN_IMAGES_FOLDER_URL . '/payment_methods/transaction_processors/giropay.svg',
+					'ideal'           => WC_ADMIN_IMAGES_FOLDER_URL . '/payment_methods/transaction_processors/ideal.svg',
+					'sofort'          => WC_ADMIN_IMAGES_FOLDER_URL . '/payment_methods/transaction_processors/sofort.svg',
+				),
+				'image'                  => WC_ADMIN_IMAGES_FOLDER_URL . '/paypal.png',
+				'image_72x72'            => WC_ADMIN_IMAGES_FOLDER_URL . '/payment_methods/72x72/paypal.png',
+				'plugins'                => array( 'woocommerce-paypal-payments' ),
+				'is_visible'             => array(
 					(object) array(
 						'type'      => 'base_location_country',
 						'value'     => 'IN',
@@ -166,8 +174,8 @@ class DefaultPaymentGateways {
 					),
 					self::get_rules_for_cbd( false ),
 				),
-				'category_other'      => array( 'US', 'CA', 'AT', 'BE', 'BG', 'HR', 'CH', 'CY', 'CZ', 'DK', 'EE', 'ES', 'FI', 'FR', 'DE', 'GB', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'NO', 'PL', 'PT', 'RO', 'SK', 'SL', 'SE', 'MX', 'BR', 'AR', 'CL', 'CO', 'EC', 'PE', 'UY', 'VE', 'AU', 'NZ', 'HK', 'JP', 'SG', 'CN', 'ID', 'ZA', 'NG', 'GH' ),
-				'category_additional' => array( 'US', 'CA', 'AT', 'BE', 'BG', 'HR', 'CH', 'CY', 'CZ', 'DK', 'EE', 'ES', 'FI', 'FR', 'DE', 'GB', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'NO', 'PL', 'PT', 'RO', 'SK', 'SL', 'SE', 'MX', 'BR', 'AR', 'CL', 'CO', 'EC', 'PE', 'UY', 'VE', 'AU', 'NZ', 'HK', 'JP', 'SG', 'CN', 'ID', 'IN', 'ZA', 'NG', 'GH' ),
+				'category_other'         => array( 'US', 'CA', 'AT', 'BE', 'BG', 'HR', 'CH', 'CY', 'CZ', 'DK', 'EE', 'ES', 'FI', 'FR', 'DE', 'GB', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'NO', 'PL', 'PT', 'RO', 'SK', 'SL', 'SE', 'MX', 'BR', 'AR', 'CL', 'CO', 'EC', 'PE', 'UY', 'VE', 'AU', 'NZ', 'HK', 'JP', 'SG', 'CN', 'ID', 'ZA', 'NG', 'GH' ),
+				'category_additional'    => array( 'US', 'CA', 'AT', 'BE', 'BG', 'HR', 'CH', 'CY', 'CZ', 'DK', 'EE', 'ES', 'FI', 'FR', 'DE', 'GB', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'NO', 'PL', 'PT', 'RO', 'SK', 'SL', 'SE', 'MX', 'BR', 'AR', 'CL', 'CO', 'EC', 'PE', 'UY', 'VE', 'AU', 'NZ', 'HK', 'JP', 'SG', 'CN', 'ID', 'IN', 'ZA', 'NG', 'GH' ),
 			),
 			array(
 				'id'          => 'cod',
