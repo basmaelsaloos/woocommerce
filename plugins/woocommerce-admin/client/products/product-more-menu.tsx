@@ -8,12 +8,12 @@ import { useSelect } from '@wordpress/data';
 import { WooHeaderItem } from '@woocommerce/admin-layout';
 import { moreVertical } from '@wordpress/icons';
 import { OPTIONS_STORE_NAME, Product } from '@woocommerce/data';
+import { ALLOW_TRACKING_OPTION_NAME } from '@woocommerce/customer-effort-score';
 
 /**
  * Internal dependencies
  */
 
-import { ALLOW_TRACKING_OPTION_NAME } from '~/customer-effort-score-tracks/constants';
 import {
 	FeedbackMenuItem,
 	ClassicEditorMenuItem,
